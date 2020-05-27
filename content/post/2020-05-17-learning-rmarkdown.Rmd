@@ -1,0 +1,187 @@
+---
+title: "Learning Rmarkdown"
+author: 'yxzoe'
+date: '2020-05-17'
+slug: learning-rmarkdown
+tags: []
+categories: []
+---
+## 什么是R Markdown
+
+通过R来书写可重复动态报告的一种格式。利用它在幻灯片、pdf、html文档、Word文件中嵌入R代码和结果。
+依赖R studio对数据进行分析、处理后产生高质量的文件、文档、报告的书写工具。
+
+关键字：Analyze、Share、Reproduce.
+
+![Rstudio→Rmd](https://img-blog.csdnimg.cn/20190121151542590.png)
+
+## R Markdown的优点
+
+- **可再现、可复制**
+	由于R Markdown是在R studio中运行，而R是一个开源性的版本控制系统，所以利用Rmd书写时可以找回之前的版本。
+- **丰富的文档排版格式**
+	RMarkdown支持数十种静态和动态输出格式，包括HTML，PDF，MSWord，光束，HTML5幻灯片，Tufte-style handouts，books, dashboards, shiny applications, 科学文章, 网站以及更多内容。
+- **更直接的代码运行能力**
+	直接在R studio的运行界面即可书写，语法简单易懂。Rmd可以在生成文档时直接运行插入的代码块，并将运行结果打印在最终文档中。
+- **支持多种语言**
+	不仅支持R语言一种方式，你还可以使用Python，Java Script等其他语言生成你想要的结果。
+- **便于分享和整理思路**
+	Rmd的页面简介，没有word中繁杂的格式、字体、颜色的选择，可以帮助创作者专心于内容的书写。
+
+## Rmd 的用途
+
+- **写博客**
+
+	Markdown的语法简洁明了、学习容易，而且功能比纯文本更强，因此有很多人用它写博客
+- **编写说明文档**
+
+	R Markdown可以编写说明文档，并且以“README.md”的文件名保存在软件的目录下面
+- **编写学术论文、期刊杂志、数据报告等规范格式的文档**
+
+	通过 Pandoc 将 Markdown 转化成 LaTex，再由强大的 LaTex 转换成 HTML、PDF、Word
+- **做PPT**
+
+	通过xaringan包，生 HTML5 幻灯片，可以在网页浏览器里打开阅览
+- **在Rstudio中写内容、更新网站**
+
+   R Studio中的R Markdown，可直接在R Studio里编辑post的内容.
+
+## Rmd 工作流程
+
+![Rmd工作流程图](https://img-blog.csdnimg.cn/20190121151434906.png)
+
+## Rmd 部分常见基本语法
+
+ 1.标题
+
+”#“＋空格 后加标题，有几个#就是几级标题，最多支持6级
+
+ 2.段落格式
+
+可以直接写，**Ctrl+0**可以使当前行变为段落，用**两个以上空格＋回车**实现换行
+
+ 3. 突出文本
+
+- 斜体：文字两端加* 或_；快捷键Ctrl+l
+
+  如：*斜体*
+
+- 加粗：文字两端加两个*或两个_；快捷键Ctrl+B
+
+  如：**加粗**
+
+- 粗斜体：文字两端加三个*或三个_；相当于上面两个加起来
+
+  如：***粗斜体***
+
+- 删除线：文字两端加两个~
+
+  如：~~删除~~
+
+- 引用文本：文字前加一个>，**注意>要放行首，前面不能有别的字**
+
+  > 引用文本
+ 
+ 4.段落
+ 
+-	段落 : 段落之间空一行
+-	换行符 : 一行结束时输入两个空格
+
+5.代码
+
+-	嵌入代码的方式
+
+		快捷键Ctrl + Alt + I
+		
+		在工具栏点击Insert命令
+		
+		手动输入
+			
+    内嵌代码 :  
+-	代码类别
+
+		单行代码：`代码内容`
+			
+		多行代码:
+		(```
+		代码···
+		代码···
+		```)
+			
+-	行间代码
+
+		嵌入R代码到文本当中，在代码两侧`来包围
+		
+		knitr把代码输出的结果代替R代码
+		
+-	代码部分
+
+		显示代码和结果
+		
+		只显示结果：
+		参数echo=FALSE可以设置不显示代码
+		
+		只显示代码：
+		参数eval=FALSE可以设置不执行程序，只显示代码
+
+
+## Rmd 的文件组成
+
+ 1.YAML文件头
+
+- title
+		"the title of markdown document"
+
+-	author
+		"the author of markdown document"
+
+- date
+		"the date of editing the document "
+
+- output
+		“the output format of markdocument”
+	（指定时间时，还可以用R代码date: "`r Sys.Date()`"）
+
+ 2.代码块
+
+-	插入代码段
+		、Ctrl+Alt+I
+		```{r}```
+
+-	为代码段命名
+		```{r by-name}```
+			setup这个代码段名称具有特殊含义。当处于笔记本模式时，名称为setup的代码段会在任何其他代码运行前自动运行一次
+
+-	代码段选项
+		eval=FALSE 禁止对代码进行求值
+		 include=FALSE 可以运行代码，但是代码和结果不会再最终文档中显示
+		echo=FALSE 禁止代码出现在最终报告中，但不会禁止结果
+		message=FALSE或warning=FALSE可以防止消息或者警告信息出现在最终报告中
+		result=FALSE可以隐藏文本输出，fig.show='hide'隐藏图形输出
+		error=TRUE代码中出现错误仍然可以生成报告
+		error=FALSE即使只有一个错误，文档也会失败
+
+-	利用代码段输出表格
+		输出与控制台格式相同的数据框或矩阵    mtcars[1:5, 1:10]
+		用表格显示数据     knitr::kable(mtcars[1:5,1:10]caption="A knitr kable")
+
+-	代码段全局设置
+		knitr::opts_chunk$set(comment = "#>",collapse = TRUE)
+
+-	内联代码
+		将R代码直接嵌入文档
+
+ 3.格式化文本
+  
+-  参考基本语法
+  
+## 我的个人学习网站
+
+（https://optimistic-xyzoe.netlify.app）
+
+![学习使我快乐](http://img.mp.itc.cn/upload/20170406/acadaca82add4f1aab7324ac85320bb9.jpeg)
+ 
+
+不定时更新···
+
+## Thanks for reading

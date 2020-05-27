@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>yxzoe&#39;s website</title>
+    <link>/</link>
+    <description>Recent content on yxzoe&#39;s website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 May 2016 21:48:51 -0700</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>R语言的数据结构</title>
+      <link>/2020/05/26/r%E8%AF%AD%E8%A8%80%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/26/r%E8%AF%AD%E8%A8%80%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <description>1.对象和属性R语言对象的5种基本类型（classes of object)：字符(character)数值(numeric:real numbers)整数(integer)复数(complex):1+2i逻辑(logical:True/False)Rstudio实操创建数值型数值（赋值）：x=1 → x &amp;lt;- 1 回车即可。 （99%的情况下，赋值用x=1也是会报错的，但是在一些极端的情况下不得行，所以一般还是使用箭头）查看x的值：输入x，回车，得到 [1] 此处的[1]代表，它后面的元素是x的第一个元素；后面的1代表x中存储的内容是1
+查看数据类型的函数“class”：输入“class（x）”回车，得到 [1] “numeric” ,意思是：x是一个数值型变量，且x的值可以是整数或小数
+创建整数型数值：”numeric“一般表示数值，如果想强调数值是”整数“，在赋值时，在数值后面加一个L即可。 例如：x &amp;lt;- 2L，回车，再用class查看数据类型，英文会变成”integer“R对字母大小写非常敏感，X与x将产生两个不同的变量，使用时要非常注意
+创建字符型数值：输入y&amp;lt;- “hello”（比数值型多一对双引号），回车即可。此时用class(y)得到的英文就是“character”字符型
+创建逻辑型数值：输入t &amp;lt;-TRUE，回车即可（在R里，TRUE/FALSE都必须用大写）
+创建复数型字符：输入x&amp;lt;-1+2i，回车，此时x的数据类型就是“complex”。（用的比较少）
+R的对象的属性名称(name)维度(dimensions: matrix, array)类型(class)长度(length)2.向量（vector）数据结构：向量（vector)：可包含多个元素，但这些元素必须属于同一种数据类型（代码都是一次性的，如果想重复利用某组代码，就要新建一个脚本文件，把代码保存在里面）为了让文件更有可读性，一般会用“#”来注释创建向量的方法：x &amp;lt;- vector(“character”, length = 10) ，即括号内是数值的类型和向量的长度。在控制台内输入这个，回车即可运行命令；而在脚本文件中，需要鼠标选中这一行命令，再点击文本框右上角的“run”来运行命令，得到一个有10个位置的空向量</description>
+    </item>
+    
+    <item>
+      <title>Learning Rmarkdown</title>
+      <link>/2020/05/17/learning-rmarkdown/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/17/learning-rmarkdown/</guid>
+      <description>什么是R Markdown通过R来书写可重复动态报告的一种格式。利用它在幻灯片、pdf、html文档、Word文件中嵌入R代码和结果。 依赖R studio对数据进行分析、处理后产生高质量的文件、文档、报告的书写工具。
+关键字：Analyze、Share、Reproduce.
+Rstudio→Rmd
+R Markdown的优点可再现、可复制 由于R Markdown是在R studio中运行，而R是一个开源性的版本控制系统，所以利用Rmd书写时可以找回之前的版本。丰富的文档排版格式 RMarkdown支持数十种静态和动态输出格式，包括HTML，PDF，MSWord，光束，HTML5幻灯片，Tufte-style handouts，books, dashboards, shiny applications, 科学文章, 网站以及更多内容。更直接的代码运行能力 直接在R studio的运行界面即可书写，语法简单易懂。Rmd可以在生成文档时直接运行插入的代码块，并将运行结果打印在最终文档中。支持多种语言 不仅支持R语言一种方式，你还可以使用Python，Java Script等其他语言生成你想要的结果。便于分享和整理思路 Rmd的页面简介，没有word中繁杂的格式、字体、颜色的选择，可以帮助创作者专心于内容的书写。Rmd 的用途写博客
+Markdown的语法简洁明了、学习容易，而且功能比纯文本更强，因此有很多人用它写博客编写说明文档
+R Markdown可以编写说明文档，并且以“README.md”的文件名保存在软件的目录下面编写学术论文、期刊杂志、数据报告等规范格式的文档
+通过 Pandoc 将 Markdown 转化成 LaTex，再由强大的 LaTex 转换成 HTML、PDF、Word做PPT
+通过xaringan包，生 HTML5 幻灯片，可以在网页浏览器里打开阅览在Rstudio中写内容、更新网站
+R Studio中的R Markdown，可直接在R Studio里编辑post的内容.
+Rmd 工作流程Rmd工作流程图
+Rmd 部分常见基本语法1.</description>
+    </item>
+    
+    <item>
+      <title>Markdown基本语法</title>
+      <link>/2020/05/17/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/17/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</guid>
+      <description>1.标题“#”＋空格 后加标题，有几个#就是几级标题，最多支持6级
+2.段落格式可以直接写，Ctrl+0可以使当前行变为段落，用两个以上空格＋回车实现换行
+3.写作时常用的操作3.1 突出文本斜体：文字两端加* 或_；快捷键Ctrl+l如：斜体
+加粗：文字两端加两个*或两个_；快捷键Ctrl+B如：加粗
+粗斜体：文字两端加三个*或三个_；相当于上面两个加起来如：粗斜体
+高亮文本：文字两端加两个=如：==high==（？？？它为啥不亮？）
+删除线：文字两端加两个~如：删除
+引用文本：文字前加一个&amp;gt;，注意&amp;gt;要放行首，前面不能有别的字引用文本
+下划线：通过HTML的u标签实现，快捷键Ctrl+U如：下划线
+分割线：在一行中使用三个以上的*、-、_即可，不能有别的东西如：
+文字排版：-的数量不固定，看好-和:的位置就行了居中： :———:居右：———:居左：:———-3.2 生成列表无序列表：前面是小圆点，默认先出现实心圆，二级为空心；用*、+、-加空格即可跳出原有层次（如把空心点变回实心点）、恢复缩进：用Ctrl+[有序列表：前面是数字序号；用1+.加空格即可，和Word操作一样任务列表：前面是小方框，完成任务可以显示打勾；用“-+空格+[]+任务内容”，任务完成后“-[x]”+任务内容即可。如：[ ] 待完成[x] 已完成3.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      
+      <guid>/about/</guid>
+      <description>This is a &amp;ldquo;hello world&amp;rdquo; example website for the blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.</description>
+    </item>
+    
+  </channel>
+</rss>
