@@ -6,8 +6,8 @@
 <meta name="generator" content="Hugo 0.69.2" />
 
 
-<title>R语言的数据结构 - yxzoe&#39;s website</title>
-<meta property="og:title" content="R语言的数据结构 - yxzoe&#39;s website">
+<title>第二章：R语言的数据结构 - yxzoe&#39;s website</title>
+<meta property="og:title" content="第二章：R语言的数据结构 - yxzoe&#39;s website">
 
 
   <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -33,7 +33,7 @@
       <header class="header">
         <nav class="nav">
   <a href="/" class="nav-logo">
-    <img src="/images/logo.png"
+    <img src="/images/cat.jpeg"
          width="50"
          height="50"
          alt="Logo">
@@ -60,7 +60,7 @@
     <span class="article-duration">1 min read</span>
     
 
-    <h1 class="article-title">R语言的数据结构</h1>
+    <h1 class="article-title">第二章：R语言的数据结构</h1>
 
     
     <span class="article-date">2020-05-26</span>
@@ -71,7 +71,7 @@
 
 
 <div id="对象和属性" class="section level1">
-<h1>1.对象和属性</h1>
+<h1>2-1 对象和属性</h1>
 <div id="r语言对象的5种基本类型classes-of-object" class="section level2">
 <h2>R语言对象的5种基本类型（classes of object)：</h2>
 <ul>
@@ -112,7 +112,7 @@
 </div>
 </div>
 <div id="向量vector" class="section level1">
-<h1>2.向量（vector）</h1>
+<h1>2-2 向量（vector）</h1>
 <div id="数据结构" class="section level2">
 <h2>数据结构：</h2>
 <ul>
@@ -135,7 +135,70 @@
 <div id="用names函数给向量添加名称" class="section level2">
 <h2>用names函数给向量添加名称：</h2>
 <ul>
-<li>之前创建了一个包含4个元素的向量x1, 输入names(x1) &lt;- c(“a”, “b”, “c”, “d”)，运行命令即完成命名。在控制台输入x1回车就能看到元素的名称对应 <img src="./public/images/names.png" alt="avatar" /></li>
+<li>之前创建了一个包含4个元素的向量x1, 输入names(x1) &lt;- c(“a”, “b”, “c”, “d”)，运行命令即完成命名。在控制台输入x1回车就能看到元素的名称对应</li>
+</ul>
+</div>
+</div>
+<div id="矩阵和数组matrix-array" class="section level1">
+<h1>2-3 矩阵和数组（matrix &amp; array）</h1>
+<div id="矩阵" class="section level2">
+<h2>矩阵</h2>
+<ul>
+<li>矩阵（matrix):向量+维度属性（一个包含两个元素的整数向量：nrow行数, ncol列数)</li>
+<li>涉及的函数有：matrix(), vector()+dim(),cbind(),rbind(),attributes() 用右上板块的小扫把logo清除以前的变量信息，防止旧变量干扰新操作</li>
+</ul>
+</div>
+<div id="创建矩阵" class="section level2">
+<h2>创建矩阵：</h2>
+<ol style="list-style-type: decimal">
+<li>x &lt;- matrix(nrow = 3, ncol = 2),即括号内是行数和列数，运行后，右侧框出现矩阵，这个矩阵里都是空值；</li>
+<li>在控制台输入x回车，就能看到3行2列的矩阵；</li>
+<li>在行数前添加参数，即矩阵的内容，如 x &lt;- matrix(1:6, nrow = 3, ncol = 2),运行得如下矩阵</li>
+<li>矩阵内容是按列来填充的</li>
+<li>矩阵的维度属性dim，运行dim(x)就能在控制台看到矩阵有几行几列</li>
+<li>想看当前矩阵有多少属性、有哪些属性：函数attributes(x),运行后在控制台能看到当前矩阵x的属性为维度</li>
+</ol>
+</div>
+<div id="拼接两个矩阵" class="section level2">
+<h2>拼接两个矩阵</h2>
+<ol style="list-style-type: decimal">
+<li>创建新矩阵y2, 使用rbind（y,y2)，就是以行拼接两个矩阵</li>
+<li>cbind（y,y2)则是以列拼接，运行得如下2行6列的矩阵</li>
+</ol>
+</div>
+<div id="数组" class="section level2">
+<h2>数组</h2>
+<ul>
+<li>数组（array)：与矩阵类似，但是维度可以大于2（矩阵只能等于2） • 用array函数创建数组</li>
+</ul>
+</div>
+<div id="创建数组" class="section level2">
+<h2>创建数组：</h2>
+<ul>
+<li>array后面第一个参数是数组内容，第二个是用dim来设置维度，用c进行维度拼接，如下命令是建立一个4行6列的二维数组。运行后得到的既是一个矩阵也是一个数组</li>
+<li>在c后面多加一个参数，创建一个三维的数组，</li>
+</ul>
+</div>
+</div>
+<div id="列表list" class="section level1">
+<h1>2-4 列表（list）</h1>
+<ul>
+<li>可以包含不同类型的对象</li>
+</ul>
+<div id="创建列表" class="section level2">
+<h2>创建列表：</h2>
+<ul>
+<li>用list（）函数</li>
+<li>l &lt;- list(“a”, 2, 10L, 3+4i, TRUE)括号内为列表每一个参数的内容</li>
+<li>这个列表包含五个元素，他们的类型分别为字符、数值、整数、复数、逻辑</li>
+<li>给列表里的元素命名，list(元素名=元素内容），名称从123变成了abc</li>
+<li>创建 每个元素包含的内容&gt;1 的列表：c(元素内包含的内容)</li>
+</ul>
+</div>
+<div id="引进新维度dimnames" class="section level2">
+<h2>引进新维度dimnames：</h2>
+<ul>
+<li>用matrix创建一个矩阵x，用dimnames函数和list函数来为矩阵命名</li>
 </ul>
 </div>
 </div>
