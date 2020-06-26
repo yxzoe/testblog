@@ -8,14 +8,14 @@ enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
 
 [params]
-    author = "Steve Francia"
-    badge = "orange"
-    quote = "red"
+    author = "xyzoe"
+    badge = "green"
+    quote = "blue"
     index_posts_num = 5
     google_search = true
-    # logo = "//blog.ertuil.top/avater.png"
+    # logo = "cat.jpeg"
     bio = """
-    <p> This is BIO. You can write something here. </p>
+    <p> This is a simple blog for learning R. </p>
     <br />
     <p>Also all html tags such as <a href="https://github.com/ertuil/erblog">link</a> are a good here.</p>
     """
@@ -28,11 +28,11 @@ footnoteReturnLinkContents = "^"
     url = "/about/"
     weight = 10
 
-# [[menu.main]]
-#     identifier = "zone"
-#     name = "Zone"
-#     url = "/zone/"
-#     weight = 10
+ [[menu.main]]
+     identifier = "My GitHub"
+     name = "My GitHub"
+     url = "https://github.com/yxzoe/yxzoe.github.io"
+     weight = 10
 
 [[menu.footer]]
     identifier = "home"
@@ -52,18 +52,18 @@ tag = "tags"
 series = "series"
 
 [[menu.icon]]
-    url = "mailto:username@mail.com"
-    name = "envelope-o"
+    url = "2608156297@qq.com"
+    name = "E-mail"
     weight = 1
 
 [[menu.icon]]
-    url = "https://github.com/username/"
+    url = "https://github.com/yxzoe/yxzoe.github.io"
     name = "github"
     weight = 1
 
 [[menu.icon]]
-    url = "https://twitter.com/username"
-    name = "twitter"
+    url = "https://user.qzone.qq.com/2608156297/main"
+    name = "Q-Zone"
     weight = 1
 
 [[menu.icon]]
