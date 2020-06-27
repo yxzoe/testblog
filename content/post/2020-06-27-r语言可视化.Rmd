@@ -1,0 +1,87 @@
+---
+title: R语言可视化
+author: yxzoe
+date: '2020-06-27'
+slug: r语言可视化
+categories: []
+tags: []
+---
+
+#gapminder动态图
+## 加载包和数据集
+ 避免图形太复杂，筛选部分国家 
+```{r}
+library(gapminder)
+library(ggdark)
+library(ggplot2)
+library(gganimate)
+
+head(gapminder)
+mydata <- gapminder[which(gapminder$country %in%
+                                                       (c('France','Italy','China','Japan','Austria','Brazil','Colombia','Cuba','','Germany','India'))),]
+
+```
+## 动态条形图
+```{r}
+ps = ggplot(mydata, aes(x=reorder(country, lifeExp),y=lifeExp, fill=country,frame=year)) +
+
+ geom_bar(stat= 'identity', position = 'dodge',show.legend = FALSE) +
+ geom_text(aes(label=paste0(lifeExp)),col="black",hjust=-0.2)+
+
+theme(axis.text.x = element_text(size = 12,angle = 90, hjust = 0.2, vjust = 0.2),legend.position="none") +
+theme(panel.background=element_rect(fill='transparent'))+
+ theme(axis.text.y=element_text(angle=0,colour="black",size=12,hjust=1))+
+ theme(axis.text.x=element_text(angle=0,colour="white",size=2,hjust=1))+
+ theme(panel.grid =element_blank()) +
+ theme(axis.text = element_blank()) +
+ theme(axis.ticks = element_blank()) +
+ coord_flip()+
+ transition_time(year) + 
+ labs(title = paste('Year:', '{frame_time}'),x = '', y ='各国生活指数')+
+ ease_aes('linear')
+
+ps
+
+```
+## 动态柱形图
+```{r}
+ps = ggplot(mydata, aes(x=reorder(country, lifeExp),y=lifeExp, fill=country,frame=year)) +
+ geom_bar(stat= 'identity', position = 'dodge',show.legend = FALSE) +
+geom_text(aes(label=paste0(lifeExp)),col="black",hjust=0)+
+theme(axis.text.x = element_text(size = 12,angle = 90, hjust = 0.2, vjust = 0.2),legend.position="none") +
+ theme(panel.background=element_rect(fill='transparent'))+
+theme(axis.text.y=element_text(angle=0,colour="white",size=12,hjust=0))+
+ theme(axis.text.x=element_text(angle=0,colour="black",size=9,hjust=0))+
+ theme(panel.grid =element_blank()) +
+ theme(axis.text = element_blank()) +
+ theme(axis.ticks = element_blank()) +
+transition_time(year) +
+labs(title = paste('Year:', '{frame_time}'),x = '', y ='各国生活指数')+
+ease_aes('linear')
+
+ps
+
+```
+## 动态点图
+```{r}
+ps = ggplot(mydata, aes(x=year,y=lifeExp)) +
+geom_point(aes(color = country)) +
+transition_manual(year, cumulative = T) +
+labs(title = paste('Year:', '{current_frame}'),x = '', y ='各国生活指数')+ ease_aes('linear')
+
+ps
+
+```
+## 动态折线图
+```{r}
+ps = ggplot(mydata, aes(x=year,y=lifeExp)) +
+ geom_point(aes(color = country)) +
+geom_line(aes(color = country)) +
+transition_manual(year, cumulative = T) +
+labs(title = paste('Year:', '{current_frame}'),x = '', y ='各国生活指数')+
+ease_aes('linear')
+
+ps
+
+```
+
