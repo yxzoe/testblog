@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "yxzoe's website"
+title = "A Hugo website"
 theme = "hugo-lithium"
 googleAnalytics = ""
 disqusShortname = ""
@@ -10,17 +10,17 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     post = "/:year/:month/:day/:slug/"
 
 [[menu.main]]
-    name = "About me"
+    name = "About"
     url = "/about/"
 [[menu.main]]
-    name = "My GitHub"
-    url = "https://github.com/yxzoe/yxzoe.github.io"
+    name = "GitHub"
+    url = "https://github.com/rstudio/blogdown"
 [[menu.main]]
-    name = "Q-zone"
-    url = "https://user.qzone.qq.com/2608156297/main"
+    name = "Twitter"
+    url = "https://twitter.com/rstudio"
 
 [params]
-    description = "A website for R learning."
+    description = "A website built through Hugo and blogdown."
 
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.12.0"
@@ -35,7 +35,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     favicon = "favicon.ico"
 
     [params.logo]
-    url = "cat.jpeg"
+    url = "logo.png"
     width = 50
     height = 50
     alt = "Logo"

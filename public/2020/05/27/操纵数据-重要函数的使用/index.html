@@ -57,7 +57,7 @@
 
   <article class="article">
     
-    <span class="article-duration">0 min read</span>
+    <span class="article-duration">1 min read</span>
     
 
     <h1 class="article-title">第四章：操纵数据：重要函数的使用</h1>
@@ -70,7 +70,102 @@
       
 
 
-
+<div id="r语言函数lapply" class="section level1">
+<h1>4-1 R语言函数lapply</h1>
+<ul>
+<li>处理循环</li>
+<li>R不仅有for/while循环语句，还有一句话就能实现循环的函数</li>
+<li>排序</li>
+<li>总结数据信息</li>
+</ul>
+<div id="lapply" class="section level2">
+<h2>1.lapply</h2>
+<ul>
+<li>可以循环处理列表中每一个元素</li>
+<li>lapply(列表，函数/函数名，其他参数）, 结果总是返回一个列表</li>
+</ul>
+</div>
+<div id="str函数" class="section level2">
+<h2>str()函数：</h2>
+<ul>
+<li>将任意R对象以一种简洁紧凑的方式呈现出来</li>
+<li>function意思是函数，x是列表，FUN是你要进行怎样的处理</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>创建一个列表x</li>
+</ol>
+<ul>
+<li>mean是求平均，lapply分别对x中的a、b元素求平均值</li>
+<li>sapply是对lapply的结果进行化简（能化简的情况下）
+<ul>
+<li>当结果列表元素长度均为1，返回向量</li>
+<li>当列表元素长度相同且大于1，返回矩阵</li>
+<li>当长度不相同则无法化简，结果和lapply一样 -sapply把lapply返回的列表简化成了一个向量</li>
+</ul></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>创建向量x，值为1~4</li>
+</ol>
+<ul>
+<li>runif意思是从一个均匀分布的总体里抽取若干个数出来
+<ul>
+<li>当x值为1时，抽出来1个数；x为2时，抽出来2个数，以此类推</li>
+<li>虽然x是向量不是列表，但在lapply中会自动强制转化为列表</li>
+<li>min和max是对前面的runif进行限定</li>
+<li>runif默认是从0<sub>1进行抽取，这样设定后就从0</sub>100抽取了</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="r语言函数apply" class="section level1">
+<h1>4-2 R语言函数apply</h1>
+<div id="apply沿着数组的某一维度处理数据" class="section level2">
+<h2>apply：沿着数组的某一维度处理数据</h2>
+<ul>
+<li>例如：将函数用于矩阵的行或列, 虽然与for/while循环的效率相似，但是只用一句话就可以完成</li>
+</ul>
+</div>
+<div id="apply数组维度函数函数名" class="section level2">
+<h2>apply（数组，维度，函数/函数名）</h2>
+<ul>
+<li>创建一个矩阵</li>
+<li>apply(x,2,mean) 意思是沿着x的第2个维度求平均</li>
+<li>矩阵的第一个维度是行，第二个维度是列，因此这里的意思就是，对矩阵x的列求平均</li>
+<li>求列的和只需把mean换成sum ##更简单的方法求行/列的和/平均</li>
+<li>rowSums(x)</li>
+<li>rowMeans(x)</li>
+<li>colSums(x)</li>
+<li>colMeans(x)</li>
+</ul>
+</div>
+<div id="创建一个矩阵" class="section level2">
+<h2>创建一个矩阵</h2>
+<ul>
+<li>rnorm意思是随机从正态分布的总体里抽取100个数</li>
+<li>后面的10，10意思是把这100个数排成10×10的矩阵</li>
+<li>quantile意思是求数据的百分位点</li>
+<li>probs是对quantile进行限定，要求25%和75%百分位点所对应的数据</li>
+</ul>
+</div>
+</div>
+<div id="r语言函数mapply" class="section level1">
+<h1>4-3 R语言函数mapply</h1>
+<ul>
+<li>lapply的多元版本 ## mapply（函数/函数名，数据，函数相关参数）</li>
+<li>创建一个列表，内容是4个1，3个2，2个3，1个4，用rep函数</li>
+<li>用mapply就只要用一次rep，数据是1<sub>4，数量是4</sub>1 ## 如何自定义函数：</li>
+<li>函数命名为s，function代表它是一个函数，n表示要从正态分布总体中抽取的个数，mean代表随机分布总体的均值，std代表随机分布代表的标准差</li>
+<li>在花括号{}中输入函数体。用rnorm函数，这个函数的意思是，从均值为mean，标准差为std的总体里抽取n个数据 -把这三行代码运行一下就可以调用它了</li>
+<li>如s(4,0,1)，意思是从均值为0，标准差为1的正态分布里抽取4个数据 ## 与mapply结合，</li>
+<li>第二个参数1：5对应s中第一个参数，也就是抽几个数；</li>
+<li>5：1对应s的第二个参数，即分布均值；</li>
+<li>2就是标准差</li>
+<li>运行后得到5个元素，第一个元素1个数，第二个2个，第五个元素5个数据</li>
+<li>且第一个元素来自均值为5，标准差为2的总体</li>
+<li>第二个元素的数据来自均值为4，标准差为2 的总体</li>
+<li>第五个元素来自均值为1，标准差为2的总体</li>
+</ul>
+</div>
 
     </div>
   </article>

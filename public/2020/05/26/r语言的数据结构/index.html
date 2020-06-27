@@ -57,7 +57,7 @@
 
   <article class="article">
     
-    <span class="article-duration">1 min read</span>
+    <span class="article-duration">2 min read</span>
     
 
     <h1 class="article-title">第二章：R语言的数据结构</h1>
@@ -123,7 +123,7 @@
 <div id="创建向量的方法" class="section level2">
 <h2>创建向量的方法：</h2>
 <ol style="list-style-type: decimal">
-<li><p>x &lt;- vector(“character”, length = 10) ，即括号内是数值的类型和向量的长度。在控制台内输入这个，回车即可运行命令；而在脚本文件中，需要鼠标选中这一行命令，再点击文本框右上角的“run”来运行命令，得到一个有10个位置的空向量</p></li>
+<li><p>x &lt;- <strong>vector</strong>(“character”, length = 10) ，即括号内是数值的类型和向量的长度。在控制台内输入这个，回车即可运行命令；而在脚本文件中，需要鼠标选中这一行命令，再点击文本框右上角的“run”来运行命令，得到一个有10个位置的空向量</p></li>
 <li><p>x1 &lt;- 1:4 ,运行命令即创建一个内容为数值1-4的向量x1，int[1:4] 1 2 3 4</p></li>
 <li>x2 &lt;- c(1,2,3,4),括号里是向量中每个元素的内容，运行得到一个包含1，2，3，4的向量x2, num[1:4] 1 2 3 4 。 【不用太在意int和num的区别，反正都是代表数字】</li>
 </ol>
@@ -135,7 +135,7 @@
 <div id="用names函数给向量添加名称" class="section level2">
 <h2>用names函数给向量添加名称：</h2>
 <ul>
-<li>之前创建了一个包含4个元素的向量x1, 输入names(x1) &lt;- c(“a”, “b”, “c”, “d”)，运行命令即完成命名。在控制台输入x1回车就能看到元素的名称对应</li>
+<li>之前创建了一个包含4个元素的向量x1, 输入<strong>names</strong>(x1) &lt;- c(“a”, “b”, “c”, “d”)，运行命令即完成命名。在控制台输入x1回车就能看到元素的名称对应</li>
 </ul>
 </div>
 </div>
@@ -145,13 +145,13 @@
 <h2>矩阵</h2>
 <ul>
 <li>矩阵（matrix):向量+维度属性（一个包含两个元素的整数向量：nrow行数, ncol列数)</li>
-<li>涉及的函数有：matrix(), vector()+dim(),cbind(),rbind(),attributes() 用右上板块的小扫把logo清除以前的变量信息，防止旧变量干扰新操作</li>
+<li>涉及的函数有：<strong>matrix(), vector()+dim(),cbind(),rbind(),attributes()</strong> 用右上板块的小扫把logo清除以前的变量信息，防止旧变量干扰新操作</li>
 </ul>
 </div>
 <div id="创建矩阵" class="section level2">
 <h2>创建矩阵：</h2>
 <ol style="list-style-type: decimal">
-<li>x &lt;- matrix(nrow = 3, ncol = 2),即括号内是行数和列数，运行后，右侧框出现矩阵，这个矩阵里都是空值；</li>
+<li>x &lt;- <strong>matrix</strong>(nrow = 3, ncol = 2),即括号内是行数和列数，运行后，右侧框出现矩阵，这个矩阵里都是空值；</li>
 <li>在控制台输入x回车，就能看到3行2列的矩阵；</li>
 <li>在行数前添加参数，即矩阵的内容，如 x &lt;- matrix(1:6, nrow = 3, ncol = 2),运行得如下矩阵</li>
 <li>矩阵内容是按列来填充的</li>
@@ -162,14 +162,14 @@
 <div id="拼接两个矩阵" class="section level2">
 <h2>拼接两个矩阵</h2>
 <ol style="list-style-type: decimal">
-<li>创建新矩阵y2, 使用rbind（y,y2)，就是以行拼接两个矩阵</li>
-<li>cbind（y,y2)则是以列拼接，运行得如下2行6列的矩阵</li>
+<li>创建新矩阵y2, 使用<strong>rbind</strong>（y,y2)，就是以行拼接两个矩阵</li>
+<li><strong>cbind</strong>（y,y2)则是以列拼接，运行得如下2行6列的矩阵</li>
 </ol>
 </div>
 <div id="数组" class="section level2">
 <h2>数组</h2>
 <ul>
-<li>数组（array)：与矩阵类似，但是维度可以大于2（矩阵只能等于2） • 用array函数创建数组</li>
+<li>数组（array)：与矩阵类似，但是维度可以大于2（矩阵只能等于2） • 用<strong>array</strong>函数创建数组</li>
 </ul>
 </div>
 <div id="创建数组" class="section level2">
@@ -188,7 +188,7 @@
 <div id="创建列表" class="section level2">
 <h2>创建列表：</h2>
 <ul>
-<li>用list（）函数</li>
+<li>用<strong>list（）</strong>函数</li>
 <li>l &lt;- list(“a”, 2, 10L, 3+4i, TRUE)括号内为列表每一个参数的内容</li>
 <li>这个列表包含五个元素，他们的类型分别为字符、数值、整数、复数、逻辑</li>
 <li>给列表里的元素命名，list(元素名=元素内容），名称从123变成了abc</li>
@@ -200,6 +200,91 @@
 <ul>
 <li>用matrix创建一个矩阵x，用dimnames函数和list函数来为矩阵命名</li>
 </ul>
+</div>
+</div>
+<div id="因子factor" class="section level1">
+<h1>2-5 因子（factor）</h1>
+<ul>
+<li>处理分类数据。分类数据可分为有序/无序</li>
+<li>有序：年级、高中低→可以比大小</li>
+<li>无序：男女性别→不能不大小</li>
+<li>可以把因子理解为 整数型向量+标签（label）即可以对这个整数向量进行描述解释</li>
+<li>比如Male/Female可以用1/2表示，但是如果光用整数向量表示，很容易遗忘这里的1、2代表什么意思，而存为factor就可以对1、2增加描述
+<ul>
+<li>常用于lm(), glm()</li>
+</ul></li>
+</ul>
+<div id="创建因子" class="section level2">
+<h2>创建因子：</h2>
+<ul>
+<li><strong>factor（c(因子内容））</strong></li>
+<li><em>level</em>是因子的一个属性，这个因子有两个水平（levels），分别为female和male</li>
+<li>设定基线水平：创建因子y，在c后面添加第二个参数levels</li>
+<li>y和x的区别在于levels里男女的先后顺序，排在第一个的叫“基线水平”</li>
+<li>用<strong>table</strong>函数查看因子整体信息</li>
+<li>用<strong>unclass</strong>函数去掉因子的属性</li>
+<li>此时因子x里的男女水平被去掉，控制台会显示以前的属性是“levels”，内容是“female”“male”。</li>
+<li>去掉标签后的因子，用class函数查看数据类型，变成了整数向量（integer）</li>
+</ul>
+</div>
+</div>
+<div id="缺失值missing-value" class="section level1">
+<h1>2-6 缺失值（missing value)</h1>
+<ul>
+<li>NA/NaN（注意大写）</li>
+<li>NaN属于NA，一般用于表示数字的缺失值；而NA可表示的缺失值范围更广</li>
+<li>NA有类型属性，如integer NA， character NA等</li>
+</ul>
+<div id="判断一个向量是否有缺失值" class="section level2">
+<h2>判断一个向量是否有缺失值：</h2>
+<p>is.na()/is.nan() - 创建一个向量x，里面的内容是1，NA,2,NA,3 - is.na(x)如果是缺失值返回真（TRUE），不是缺失值返回假（FALSE） Is.nan返回的全是false，说明向量x里没有NaN类型的缺失值，nan识别不出NA 把x里的NA换成NaN，两者的输出结果一致，即na可以检测出NaN</p>
+</div>
+</div>
+<div id="数据框data-frame" class="section level1">
+<h1>2-7 数据框（data frame)</h1>
+<ul>
+<li>用于存储表格数据（tabular data）</li>
+<li>可以把数据框视为 各元素长度相等的一种列表形式：每个元素代表一列数据，每个元素的长度代表行数，元素类型可以不同</li>
+</ul>
+<div id="创建数据框" class="section level2">
+<h2>创建数据框：</h2>
+<p>df &lt;- data.frame() - 每个参数代表每一列的内容。第一个参数命名为id，内容为1234；第二列叫name，内容为字符型的abcd；第三列叫gender，TRUE表示男性 - df &lt;- data.frame(id = c(1,2,3,4), name = c(“a”,“b”,“c”,“d”),gender = c(TRUE,TRUE,FALSE,FALSE)</p>
+</div>
+<div id="数据框和矩阵的区别" class="section level2">
+<h2>数据框和矩阵的区别：</h2>
+<p>矩阵里每一行的元素都是同一个类型的，而数据框里，一行三个元素类型各不相同 ## 用nrow和ncol查看数据框有多少行多少列</p>
+</div>
+</div>
+<div id="日期与时间datetime" class="section level1">
+<h1>2-8 日期与时间（date，time）</h1>
+<ol style="list-style-type: decimal">
+<li>日期 Date：距离1970-01-01的天数/date()/Sys.Date()/weekdays()/months()/quarters()</li>
+</ol>
+<ul>
+<li>用date()查询，会根据时区、电脑时间设置变化</li>
+<li>用Sys.Date()查询，只有年月日；此时x2为日期类型</li>
+<li>将任意日期存储为Date格式：as.Date(“年-月-日“），注意用-连接，月日用两位数</li>
+</ul>
+<div id="日期查询" class="section level2">
+<h2>日期查询：</h2>
+<ul>
+<li>某个日期是星期几：weekdays()</li>
+<li>某个日期是几月：months（）</li>
+<li>某个日期属于哪个季度：quarters（） Q1为该年第一季度</li>
+<li>某个日期距离1970年1月1日多少天：julian()</li>
+</ul>
+</div>
+<div id="计算某两个日期之间相隔多少天" class="section level2">
+<h2>计算某两个日期之间相隔多少天：</h2>
+<ul>
+<li>将两个Date类型的数值相减。</li>
+<li>若只想得到365这个数字不想要一句话，就强行把计算结果转化为numeric数值形式</li>
+</ul>
+<p>2.时间 POSIXct/POSIXlt：距离1970-01-01的秒数/Sys.time() - POSIXct：存储的是整数，数据常被存入数据框中 - POSIXlt：存储为列表，还包含星期、年、月、日等信息 - Sys.time()，最后的CST为时区，数据类型为POSIXct 将POSIXct与POSIXlt相互转换：x本为POSIXct格式，用<strong>as.POSIXlt</strong>(x)转换；把lt换成ct就as.POSIXct就行了</p>
+</div>
+<div id="查看lt这个类型里存了哪些内容" class="section level2">
+<h2>查看lt这个类型里存了哪些内容：</h2>
+<p>names内容名称，unclass去掉p的属性留下p的内容 ##将任意格式的时间字符串转化为Date格式： strptime() 月份%B，日%d，年%Y，时%H，月%M，其他标点与x1一致</p>
 </div>
 </div>
 

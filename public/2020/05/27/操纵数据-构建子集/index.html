@@ -112,6 +112,73 @@
 </div>
 <div id="数据框的子集" class="section level1">
 <h1>3-3 数据框的子集</h1>
+<ul>
+<li>先创建一个数据框x</li>
+<li>要将第3列第2、4行的元素变成缺失值：x$v3[c(2,4)] &lt;- NA</li>
+<li>获取数据框里第2列的元素，类似于矩阵的操作：x[,2]或者x[,“v2”]。（这个v2是第二列的名称，所以要加引号）</li>
+<li>在括号里嵌套一个which，输出结果一样</li>
+<li>which的作用是 判断哪些是真</li>
+</ul>
+<div id="构建子集" class="section level2">
+<h2>构建子集：</h2>
+<p><strong>subset()函数</strong></p>
+</div>
+</div>
+<div id="列表的子集" class="section level1">
+<h1>3-4 列表的子集</h1>
+<p>-列表的子集 - <a href="从列表或数据框中提取元素">[]</a>/$/<a href="从列表或数据框中提取元素">[]</a>/<a href="从列表或数据框中提取元素">[]</a> - 嵌套列表/不完全匹配（partial matching)</p>
+<div id="构建一个列表x" class="section level2">
+<h2>构建一个列表x</h2>
+<ul>
+<li>想获取列表中某一个元素：x[1]或x[“id”]就能获取元素名称和内容</li>
+<li>只想要元素内容不想要名称：双括号，或者$符号</li>
+<li>同时获取多个元素的下标：用c连接</li>
+<li>将id这个名字赋值给变量y，那查询id里的信息既可以用嵌套括号加“id”也可以加y，但是用$符号只能用元素名称id，不能查包含id的变量y</li>
+</ul>
+</div>
+<div id="如何从列表中获取嵌套的元素" class="section level2">
+<h2>如何从列表中获取嵌套的元素：</h2>
+<ul>
+<li>首先创建一个列表。这个列表中有两个元素，第一个元素名字叫a，它的内容也是一个列表，内容是1234，第二个元素名叫b，它的内容是两个字符型的变量</li>
+<li>用x双括号1得到的是整个第一个元素a的内容</li>
+<li>如果想得到列表a里的第2个元素，只需将两个双括号链接</li>
+<li>如果一个双括号+一个单括号，得到的是子列表中的第二个元素，而不是第二个元素的内容</li>
+<li>用双括号c(1,3)，意思是要得到第一个元素的第三个内容，c(2,2)是第二个元素的第二个内容</li>
+</ul>
+</div>
+<div id="不完全匹配" class="section level2">
+<h2>不完全匹配：</h2>
+<ul>
+<li>创建一个列表l，他的名字很复杂容易出错，</li>
+<li>使用的时候只需l$，就会自动弹出这个asdfghj的提示</li>
+<li>或者输入l$a，也能得到同样的结果</li>
+<li>但是双括号“a”得到的是空，因为列表中没有一个字符型的内容a，但是在“a“后面加一个参数exact = FALSE，就可以关掉精确匹配，做到不完全匹配</li>
+<li>如果一个列表里有多个元素的名字都包含a，则x<span class="math inline">\(a和加上exact都匹配不到结果，但是x\)</span>as就能匹配到asdfghj</li>
+</ul>
+</div>
+</div>
+<div id="处理缺失值missing-value" class="section level1">
+<h1>3-5 处理缺失值（missing value)</h1>
+<ul>
+<li>创建一个包含缺失值的向量x，<strong>is.na</strong>是看它是否有缺失值</li>
+<li>要想得到向量中除去缺失值的内容，只需[！is.na(x)]</li>
+<li>!的意思是“取反”，上图所示，如果没有！得到的就只有缺失值 ## 创建两个包含缺失值的向量</li>
+<li>若只想得到里面没有缺失值的内容</li>
+<li>用complete.cases(x,y)，得到逻辑向量，只有x和y都不是缺失值的位置才是true</li>
+<li>只要用x[z],y[z]，就能得到xy里都不是缺失值的内容</li>
+<li>用一个R里自带的数据集举例。首先需要用library(datasets)把这个数据集引进来</li>
+<li>可以在右下角板块的pakages里看R里有哪些包，查datasets，选择airquality为例</li>
+<li>head(airquality)可以看到这个包里前6行6列的内容，其中含有缺失值</li>
+<li>用complete.cases函数，得到一个逻辑向量g</li>
+<li>[1]意思是，这一行第一个元素在整个向量中是第1个，[13]意思是，这一行第一个元素在整个向量中是第13个</li>
+<li>[g,]意思是选择airquality里不包含缺失值的记录，列的地方没有参数，意思是所有列（变量）都要</li>
+<li>[1:10，]意思是看1~10行，所有列都要</li>
+<li>中间没有的行，说明原来这些行里有缺失值</li>
+</ul>
+</div>
+<div id="向量化操作vectorized-operation" class="section level1">
+<h1>3-6 向量化操作（vectorized operation)</h1>
+<p>可用于向量、矩阵等结构，使代码简洁、易于阅读、效率高 - 创建两个向量x.y。若想要xy对应元素相加/乘/除，直接x+y,x*y,x/y就可以了</p>
 </div>
 
     </div>
