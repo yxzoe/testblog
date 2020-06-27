@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.69.2" />
+
+
+<title>用R语言告白吧！ - yxzoe&#39;s website</title>
+<meta property="og:title" content="用R语言告白吧！ - yxzoe&#39;s website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/cat.jpeg"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About me</a></li>
+    
+    <li><a href="https://github.com/yxzoe/yxzoe.github.io">My GitHub</a></li>
+    
+    <li><a href="https://user.qzone.qq.com/2608156297/main">Q-zone</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">用R语言告白吧！</h1>
+
+    
+    <span class="article-date">2020-06-27</span>
+    
+
+    <div class="article-content">
+      
+
+
+<div id="高逼格表白用r语言绘制小心心" class="section level1">
+<h1><strong>高逼格表白</strong>——用R语言绘制小心心</h1>
+<p>1.加载<code>ggplot</code>包,设定数据集</p>
+<p>2.用<code>geom_line</code>画出大致轮廓，并设置边框颜色； 用<code>geom_polygon</code>来进行颜色填充并隐藏图例; <code>scale_x/y_continuous</code>隐藏坐标轴</p>
+<p>3.<code>theme_bw</code>设置背景色，<code>panel.grid</code>删除网格线、<code>panel.border</code>删除边框线、<code>axis.ticks</code>删除刻度线、<code>axis.title</code>删除坐标轴标签</p>
+<p>4.在心上写上你想说的话：label</p>
+<p>代码如下</p>
+<pre class="r"><code>library(ggplot2)
+
+t = seq(0, 2 * pi, by = 0.1)
+x = 16 * sin(t)^3
+y = 13 * cos(t) - 5 * cos(2 * t) - 2 * cos(3 * t) - cos(4 * t)
+a = (x - min(x))/(max(x) - min(x))
+b = (y - min(y))/(max(y) - min(y))
+
+ggplot(data=NULL, aes(x=x, y=y)) +
+geom_line(aes(color=I(&#39;white&#39;))) +
+geom_polygon(aes(fill=&#39;red&#39;), show.legend = F) +
+scale_x_continuous(labels = NULL) +
+scale_y_continuous(labels = NULL) +
+
+theme_bw() + 
+theme(panel.grid.major = element_blank(), 
+panel.grid.minor = element_blank(), 
+panel.border = element_blank(), 
+axis.ticks = element_blank(), 
+axis.title = element_blank()) + 
+ annotate(&#39;text&#39;, x=median(a), y=median(b),
+          
+label=&#39;Wish Scuer happy everyday!
+  ——yxzoe&#39;,
+ size=5)   </code></pre>
+<p><img src="/post/2020-06-27-用r语言告白吧_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

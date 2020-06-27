@@ -1,42 +1,72 @@
-baseurl = "/"
-languageCode = "en-us"
-title = "yxzoe's website"
-theme = "hugo-lithium"
-googleAnalytics = ""
-disqusShortname = ""
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
-
-[permalinks]
-    post = "/:year/:month/:day/:slug/"
-
-[[menu.main]]
-    name = "About me"
-    url = "/about/"
-[[menu.main]]
-    name = "My GitHub"
-    url = "https://github.com/yxzoe/yxzoe.github.io"
-[[menu.main]]
-    name = "Q-zone"
-    url = "https://user.qzone.qq.com/2608156297/main"
+baseURL = "https://example.com"
+title = "yxzoe's blog"
+theme = "erblog"
+paginate = 3
+languageCode = "en"
+DefaultContentLanguage = "en"
+enableInlineShortcodes = true
+footnoteReturnLinkContents = "^"
 
 [params]
-    description = "A website for R learning."
+    author = "yxzoe周雨欣"
+    badge = "orange"
+    quote = "red"
+    index_posts_num = 5
+    google_search = true
+    # logo = "//themes/erblog/static/self/img/cat.jpeg"
+    bio = """
+    <p> This is a simple website for R learning. </p>
+    <br />
+    <p>Welcome to contact me through <a href="https://github.com/yxzoe">github</a> although there's little content.</p>
+    """
+    # copyright = "Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved."
 
-    # options for highlight.js (version, additional languages, and theme)
-    highlightjsVersion = "9.12.0"
-    highlightjsCDN = "//cdnjs.cloudflare.com/ajax/libs"
-    highlightjsLang = ["r", "yaml"]
-    highlightjsTheme = "github"
 
-    MathJaxCDN = "//cdnjs.cloudflare.com/ajax/libs"
-    MathJaxVersion = "2.7.5"
+[[menu.main]]
+    identifier = "about"
+    name = "关于我"
+    url = "/about/"
+    weight = 10
 
-    # path to the favicon, under "static"
-    favicon = "favicon.ico"
+# [[menu.main]]
+#     identifier = "GitHub"
+#     name = "GitHub"
+#     url = "https://github.com/yxzoe"
+#     weight = 10
 
-    [params.logo]
-    url = "cat.jpeg"
-    width = 50
-    height = 50
-    alt = "Logo"
+[[menu.footer]]
+    identifier = "home"
+    name = "home"
+    url = "/"
+    weight = 1
 
+[[menu.footer]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[[menu.icon]]
+    url = "mailto:username@mail.com"
+    name = "envelope-o"
+    weight = 1
+
+[[menu.icon]]
+    url = "https://github.com/username/"
+    name = "github"
+    weight = 1
+
+[[menu.icon]]
+    url = "https://twitter.com/username"
+    name = "twitter"
+    weight = 1
+
+[[menu.icon]]
+    url = "https://www.instagram.com/username/"
+    name = "instagram"
+    weight = 1

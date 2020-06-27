@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.69.2" />
+
+
+<title>R语言可视化 - yxzoe&#39;s website</title>
+<meta property="og:title" content="R语言可视化 - yxzoe&#39;s website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/cat.jpeg"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About me</a></li>
+    
+    <li><a href="https://github.com/yxzoe/yxzoe.github.io">My GitHub</a></li>
+    
+    <li><a href="https://user.qzone.qq.com/2608156297/main">Q-zone</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">R语言可视化</h1>
+
+    
+    <span class="article-date">2020-06-27</span>
+    
+
+    <div class="article-content">
+      
+
+
+<div id="gapminder动态图" class="section level1">
+<h1>gapminder动态图</h1>
+<div id="加载包和数据集" class="section level2">
+<h2>加载包和数据集</h2>
+<p>避免图形太复杂，筛选部分国家</p>
+<pre class="r"><code>library(gapminder)
+library(ggdark)
+library(ggplot2)
+library(gganimate)
+
+head(gapminder)</code></pre>
+<pre><code>## # A tibble: 6 x 6
+##   country     continent  year lifeExp      pop gdpPercap
+##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+## 1 Afghanistan Asia       1952    28.8  8425333      779.
+## 2 Afghanistan Asia       1957    30.3  9240934      821.
+## 3 Afghanistan Asia       1962    32.0 10267083      853.
+## 4 Afghanistan Asia       1967    34.0 11537966      836.
+## 5 Afghanistan Asia       1972    36.1 13079460      740.
+## 6 Afghanistan Asia       1977    38.4 14880372      786.</code></pre>
+<pre class="r"><code>mydata &lt;- gapminder[which(gapminder$country %in%
+                                                       (c(&#39;France&#39;,&#39;Italy&#39;,&#39;China&#39;,&#39;Japan&#39;,&#39;Austria&#39;,&#39;Brazil&#39;,&#39;Colombia&#39;,&#39;Cuba&#39;,&#39;&#39;,&#39;Germany&#39;,&#39;India&#39;))),]</code></pre>
+</div>
+<div id="动态条形图" class="section level2">
+<h2>动态条形图</h2>
+<pre class="r"><code>ps = ggplot(mydata, aes(x=reorder(country, lifeExp),y=lifeExp, fill=country,frame=year)) +
+
+ geom_bar(stat= &#39;identity&#39;, position = &#39;dodge&#39;,show.legend = FALSE) +
+ geom_text(aes(label=paste0(lifeExp)),col=&quot;black&quot;,hjust=-0.2)+
+
+theme(axis.text.x = element_text(size = 12,angle = 90, hjust = 0.2, vjust = 0.2),legend.position=&quot;none&quot;) +
+theme(panel.background=element_rect(fill=&#39;transparent&#39;))+
+ theme(axis.text.y=element_text(angle=0,colour=&quot;black&quot;,size=12,hjust=1))+
+ theme(axis.text.x=element_text(angle=0,colour=&quot;white&quot;,size=2,hjust=1))+
+ theme(panel.grid =element_blank()) +
+ theme(axis.text = element_blank()) +
+ theme(axis.ticks = element_blank()) +
+ coord_flip()+
+ transition_time(year) + 
+ labs(title = paste(&#39;Year:&#39;, &#39;{frame_time}&#39;),x = &#39;&#39;, y =&#39;各国生活指数&#39;)+
+ ease_aes(&#39;linear&#39;)
+
+ps</code></pre>
+<p><img src="/post/2020-06-27-r语言可视化_files/figure-html/unnamed-chunk-2-1.gif" /><!-- --> ## 动态柱形图</p>
+<pre class="r"><code>ps = ggplot(mydata, aes(x=reorder(country, lifeExp),y=lifeExp, fill=country,frame=year)) +
+ geom_bar(stat= &#39;identity&#39;, position = &#39;dodge&#39;,show.legend = FALSE) +
+geom_text(aes(label=paste0(lifeExp)),col=&quot;black&quot;,hjust=0)+
+theme(axis.text.x = element_text(size = 12,angle = 90, hjust = 0.2, vjust = 0.2),legend.position=&quot;none&quot;) +
+ theme(panel.background=element_rect(fill=&#39;transparent&#39;))+
+theme(axis.text.y=element_text(angle=0,colour=&quot;white&quot;,size=12,hjust=0))+
+ theme(axis.text.x=element_text(angle=0,colour=&quot;black&quot;,size=9,hjust=0))+
+ theme(panel.grid =element_blank()) +
+ theme(axis.text = element_blank()) +
+ theme(axis.ticks = element_blank()) +
+transition_time(year) +
+labs(title = paste(&#39;Year:&#39;, &#39;{frame_time}&#39;),x = &#39;&#39;, y =&#39;各国生活指数&#39;)+
+ease_aes(&#39;linear&#39;)
+
+ps</code></pre>
+<p><img src="/post/2020-06-27-r语言可视化_files/figure-html/unnamed-chunk-3-1.gif" /><!-- --> ## 动态点图</p>
+<pre class="r"><code>ps = ggplot(mydata, aes(x=year,y=lifeExp)) +
+geom_point(aes(color = country)) +
+transition_manual(year, cumulative = T) +
+labs(title = paste(&#39;Year:&#39;, &#39;{current_frame}&#39;),x = &#39;&#39;, y =&#39;各国生活指数&#39;)+ ease_aes(&#39;linear&#39;)
+
+ps</code></pre>
+<pre><code>## nframes and fps adjusted to match transition</code></pre>
+<p><img src="/post/2020-06-27-r语言可视化_files/figure-html/unnamed-chunk-4-1.gif" /><!-- --> ## 动态折线图</p>
+<pre class="r"><code>ps = ggplot(mydata, aes(x=year,y=lifeExp)) +
+ geom_point(aes(color = country)) +
+geom_line(aes(color = country)) +
+transition_manual(year, cumulative = T) +
+labs(title = paste(&#39;Year:&#39;, &#39;{current_frame}&#39;),x = &#39;&#39;, y =&#39;各国生活指数&#39;)+
+ease_aes(&#39;linear&#39;)
+
+ps</code></pre>
+<pre><code>## nframes and fps adjusted to match transition</code></pre>
+<pre><code>## geom_path: Each group consists of only one observation. Do you need to adjust
+## the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to adjust
+## the group aesthetic?</code></pre>
+<p><img src="/post/2020-06-27-r语言可视化_files/figure-html/unnamed-chunk-5-1.gif" /><!-- --></p>
+</div>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+
